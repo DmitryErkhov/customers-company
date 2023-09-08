@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:users/services/app_color_style.dart';
+
+import 'app_color_style.dart';
 
 class CustomTextStyle {
 
