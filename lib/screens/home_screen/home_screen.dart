@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.grey,
               ),
             ),
-            Text('Привет, Александр', style: CustomTextStyle.titleW500S16Style(MediaQuery.of(context).size),),
+            //Text('Привет, Александр', style: CustomTextStyle.titleW500S16Style(MediaQuery.of(context).size),),
           ],
         ),
       ),
@@ -36,18 +36,18 @@ class HomeScreen extends StatelessWidget {
             // Блок виджета автомобиля
 
             // Блок виджета ближайших записей
-            Text('Мои ближайшие записи', style: CustomTextStyle.titleW900S16Style(MediaQuery.of(context).size), textAlign: TextAlign.center,),
-
-            // Блок виджета списка доступных услуг
-            Text('Список доступных услуг', style: CustomTextStyle.titleW900S16Style(MediaQuery.of(context).size), textAlign: TextAlign.center,),
-
-
-            // Блок виджета акции и специальные предложения
-            Text('Акции и специальные предложения', style: CustomTextStyle.titleW900S16Style(MediaQuery.of(context).size), textAlign: TextAlign.center,),
-
-
-            // Блок виджета местоположения СТО
-            Text('Наше местоположение', style: CustomTextStyle.titleW900S16Style(MediaQuery.of(context).size), textAlign: TextAlign.center,),
+            // Text('Мои ближайшие записи', style: CustomTextStyle.titleW900S16Style(MediaQuery.of(context).size), textAlign: TextAlign.center,),
+            //
+            // // Блок виджета списка доступных услуг
+            // Text('Список доступных услуг', style: CustomTextStyle.titleW900S16Style(MediaQuery.of(context).size), textAlign: TextAlign.center,),
+            //
+            //
+            // // Блок виджета акции и специальные предложения
+            // Text('Акции и специальные предложения', style: CustomTextStyle.titleW900S16Style(MediaQuery.of(context).size), textAlign: TextAlign.center,),
+            //
+            //
+            // // Блок виджета местоположения СТО
+            // Text('Наше местоположение', style: CustomTextStyle.titleW900S16Style(MediaQuery.of(context).size), textAlign: TextAlign.center,),
 
           ],
         ),
