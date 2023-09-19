@@ -4,9 +4,20 @@ import 'package:user_company/services/app_text_style.dart';
 import '../../../services/app_color_style.dart';
 
 class DesktopView extends StatefulWidget {
-  final double textScaleFactor;
 
-  const DesktopView({Key? key, required this.textScaleFactor}) : super(key: key);
+  final double textScaleFactor;
+  final TextEditingController emailController;
+  final Function(String) updateEmail;
+
+  const DesktopView({
+    required this.textScaleFactor,
+    required this.emailController,
+    required this.updateEmail,
+  });
+
+  // final double textScaleFactor;
+  //
+  // const DesktopView({Key? key, required this.textScaleFactor}) : super(key: key);
 
   @override
   State<DesktopView> createState() => _DesktopViewState();
@@ -17,6 +28,12 @@ class _DesktopViewState extends State<DesktopView> {
 
   @override
   Widget build(BuildContext context) {
+
+    double wid = MediaQuery.of(context).size.width;
+    double he = MediaQuery.of(context).size.height;
+
+    Size textScale = MediaQuery.of(context).size * (1 + MediaQuery.of(context).devicePixelRatio + MediaQuery.of(context).textScaleFactor)/2;
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(top: MediaQuery.of(context).size.width/10),
@@ -25,7 +42,6 @@ class _DesktopViewState extends State<DesktopView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Column(
-
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
@@ -40,9 +56,12 @@ class _DesktopViewState extends State<DesktopView> {
                   padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.width/48),
                   child: Container(
                     width: MediaQuery.of(context).size.width/3.15,
-                    //height: 50,
-                    //decoration: CustomDecorationStyle.shadowRectangle,
-                    child: TextField(
+                    child: TextFormField(
+                      controller: widget.emailController,
+                      onChanged: (newValue) {
+                        print(widget.emailController.text);
+                        widget.updateEmail(newValue);
+                      },
                       cursorColor: CustomColorStyle.accentColor,
                       style: CustomTextStyle.textInTextFieldAuthPage(MediaQuery.of(context).size),
                       decoration: InputDecoration(
@@ -52,7 +71,7 @@ class _DesktopViewState extends State<DesktopView> {
                           child: Icon(Icons.people_alt_outlined, color: CustomColorStyle.greyColor,),
                         ),
                         hintText: 'Email адрес',
-                        hintStyle: CustomTextStyle.hintTextFieldAuthPage(MediaQuery.of(context).size),
+                        hintStyle: CustomTextStyle.hintTextFieldAuthPage(MediaQuery.of(context).size * MediaQuery.of(context).devicePixelRatio),
                         fillColor: CustomColorStyle.backGroundWhite,
                         filled: true,
                         enabledBorder: OutlineInputBorder(
@@ -81,7 +100,7 @@ class _DesktopViewState extends State<DesktopView> {
                         child: Icon(Icons.password, color: CustomColorStyle.greyColor,),
                       ),
                       hintText: 'Пароль',
-                      hintStyle: CustomTextStyle.hintTextFieldAuthPage(MediaQuery.of(context).size),
+                      hintStyle: CustomTextStyle.hintTextFieldAuthPage(MediaQuery.of(context).size * MediaQuery.of(context).devicePixelRatio),
                       fillColor: CustomColorStyle.backGroundWhite,
                       filled: true,
                       enabledBorder: OutlineInputBorder(
@@ -120,24 +139,22 @@ class _DesktopViewState extends State<DesktopView> {
                       children:[
                         TextSpan(
                           text: 'Забыли пароль?',
-                          style: CustomTextStyle.textButtonAuthPage(MediaQuery.of(context).size, CustomColorStyle.textColor),
+                          style: CustomTextStyle.textButtonAuthPage(MediaQuery.of(context).size * MediaQuery.of(context).devicePixelRatio, CustomColorStyle.textColor),
                         ),
                         TextSpan(
                           text: ' Тогда нажмите на этот текст для восстановления',
-                          style: CustomTextStyle.textButtonAuthPage(MediaQuery.of(context).size, CustomColorStyle.greyColor),
+                          style: CustomTextStyle.textButtonAuthPage(MediaQuery.of(context).size * MediaQuery.of(context).devicePixelRatio, CustomColorStyle.greyColor),
                         ),
                       ],
                     ),
                   ),
                 ),
-
-
                 Container(
                   width: MediaQuery.of(context).size.width/3.15,
                   margin: EdgeInsets.only(top: MediaQuery.of(context).size.width/48),
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                        textStyle: CustomTextStyle.textInTextFieldAuthPage(MediaQuery.of(context).size),
+                        textStyle: CustomTextStyle.textInTextFieldAuthPage(MediaQuery.of(context).size * MediaQuery.of(context).devicePixelRatio),
                       side: BorderSide(
                         color: CustomColorStyle.accentColor, //Set border color
                         width: 1, //Set border width
@@ -154,7 +171,7 @@ class _DesktopViewState extends State<DesktopView> {
                         children: [
                           Align(
                             alignment: Alignment.center,
-                            child: Text('Войти', style: CustomTextStyle.outlinedButtonAuthPage(MediaQuery.of(context).size),), // add your button text here
+                            child: Text('Войти', style: CustomTextStyle.outlinedButtonAuthPage(MediaQuery.of(context).size * MediaQuery.of(context).devicePixelRatio),), // add your button text here
                           ),
                           Align(
                             alignment: Alignment.centerRight,
